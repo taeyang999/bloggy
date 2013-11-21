@@ -1,0 +1,30 @@
+<h1> "Show" Blog</h1>
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @blog.title %>
+</p>
+
+<p>
+  <strong>Content:</strong>
+  <%= @blog.content %>
+</p>
+
+<hr/>
+
+<%= render '/comments/form' %>
+
+<hr/>
+
+<p>
+	<h3>Comments</h3>
+	<% @blog.comments.each do |comment| %>
+		<strong><%= comment.name %></strong>
+		<%= comment.content %>		
+		<%= link_to 'X', comment, method: :delete, data: { confirm: 'Are you sure?' } %>
+	<% end %>
+</p>
+
+<%= link_to 'Edit', edit_blog_path(@blog) %> |
+<%= link_to 'Back', blogs_path %>
