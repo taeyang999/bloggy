@@ -22,6 +22,7 @@ class BlogsController < ApplicationController
 
   # GET /blogs/1/edit
   def edit
+    @tag = Tag.new
   end
 
   # POST /blogs

@@ -4,6 +4,7 @@
       <th>Title</th>
       <th>Content</th>
       <th># of comments</th>
+      <th>Tags</th>
       <th></th>
       <th></th>
       <th></th>
@@ -16,6 +17,10 @@
         <td><%= blog.title %></td>
         <td><%= blog.content %></td>
         <td><%= blog.comments.count %></td>
+        <td><% blog.tags.each do |tag| %>
+            <%= tag.name %>
+            <% end %>
+        </td>
         <td><%= link_to 'Show', blog, :class => "btn btn-info btn-xs" %></td>
         <td><%= link_to 'Edit', edit_blog_path(blog), :class => "btn btn-success btn-xs" %></td>
         <td><%= link_to 'Destroy', blog, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger btn-xs"%></td>

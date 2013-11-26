@@ -13,18 +13,35 @@
 
 <hr/>
 
-<%= render '/comments/form' %>
+<div style="float:left">
+	<%= render '/comments/form' %>
+</div>
+
+<div style="float:right">
+	<div>
+		<h3>Comments</h3>
+		<% @blog.comments.each do |comment| %>
+		<span class="btn btn-success btn-xs"
+			<strong><%= comment.name %></strong>
+			<%= comment.content %>
+		</span>
+		<% end %>
+	</div>
+
+	<div>
+		<h3>Tags</h3>
+		<% @blog.tags.each do |tag| %>
+		<span class="btn btn-info btn-xs">
+			<strong><%= tag.name %></strong>	
+		</span>
+		<% end %>
+	</div>
+</div> <!-- FLOAT RIGHT -->
+
+
+<div style="clear:both"></div>
 
 <hr/>
-
-<p>
-	<h3>Comments</h3>
-	<% @blog.comments.each do |comment| %>
-		<strong><%= comment.name %></strong>
-		<%= comment.content %>		
-		<%= link_to 'X', comment, method: :delete, data: { confirm: 'Are you sure?' } %>
-	<% end %>
-</p>
 
 <%= link_to 'Edit', edit_blog_path(@blog) %> |
 <%= link_to 'Back', blogs_path %>

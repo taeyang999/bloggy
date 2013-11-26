@@ -1,6 +1,40 @@
 <h1>"Edit" Blog</h1>
 
-<%= render 'form' %>
+<hr/>
+
+<div style="float:left">
+	<%= render 'form' %>
+</div>
+
+<div style="float:right">
+	<h3>Add Tag</h3>
+	<%= render 'tags/form' %>
+
+<hr/>
+
+	<h3>Comments</h3>
+		<% @blog.comments.each do |comment| %>
+			<span class="btn btn-success btn-xs"
+			<strong><%= comment.name %></strong>
+			<%= comment.content %>		
+			<%= link_to 'X', comment, method: :delete, data: { confirm: 'Are you sure?' } %>
+			</span>
+		<% end %>
+	
+	<h4>Associated Tags</h4>
+		<% @blog.tags.each do |tag| %>
+			<span class="btn btn-info btn-xs">
+			<%= tag.name %>
+			<%= link_to 'X', tag, method: :delete, data: { confirm: 'Are you sure?' } %>
+			</span>
+		<% end %>
+</div>
+
+
+	
+<div style="clear:both"></div>
+
+<hr/>
 
 <%= link_to 'Show', @blog %> |
 <%= link_to 'Back', blogs_path %>
